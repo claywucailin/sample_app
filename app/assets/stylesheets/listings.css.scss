@@ -1,0 +1,148 @@
+.sidebar {
+  /*float: left;*/
+  width: 100px;
+}
+.listing-info {
+  width: 480px;
+}
+.listing-misc {
+  width: 360px;
+  #listing_map {
+    .map {
+      width: 360px;
+      height: 240px;
+    }
+  }
+}
+.active_container h2{
+   font:36px "微软雅黑" #1a1a1a;
+   height:40px;
+   background:url(activeicon.png) no-repeat;
+   padding-left:30px;
+   margin-bottom:50px;
+}
+.icons.sidebar.pull-left{
+   margin-right:20px;
+   margin-bottom:90px;
+   height:900px;
+   border-right:1px solid #c6c6c6;
+   #listing_map{
+   }
+   .img{
+      display:block;
+      height:80px;
+      position:center;
+   }
+}
+.listing-info.pull-left{
+   margin-left:20px;
+   h1{
+     font-size: 30px;
+     margin-top:-2px;
+   }
+   .time{
+      margin-top:55px;
+   }
+   .description{
+      margin-top:60px;
+   }
+   .seat-section-row{
+      margin-top:60px;
+   }
+   .seat-num{
+      margin-top:60px;
+      span{
+        color:red;
+        padding-left:10px;
+      }
+   }
+   
+   form{
+      margin-top:60px;
+      label{
+         display:inline-block;
+      }
+      select{
+         margin:20px auto;
+	 /*background:url(arraw-down-white.png) repeat-y 180px 0px;*/
+	 width:200px;
+	 height:20px;
+	 border:1px solid #a0220a;
+	 font-size:1px;
+	 line-height:20px;
+	 padding: 0;
+      }
+      .red-caret {
+         background: url(arraw-down-white.png) repeat-y 180px 0px;
+         width: 20px;
+         height: 20px;
+         content: "";
+      }
+      p{
+        margin-top:40px;
+        span{
+	  color:red;
+	}
+      }
+      input{
+        border:none;
+        margin-top:40px;
+        width:150px;
+        height:60px;
+        display:inline-block;
+        background:url("goto-pay-icon.png")
+      }
+      a{   
+	color:red;
+	position:relative;
+	top:20px;
+	left:40px;
+	font-size:20px;
+      }
+   }
+}
+.listing-misc.pull-left{
+   width:360px;
+   .columinfo{
+      width:350px;
+      height:30px;
+      line-height:30px;
+      background:#a02208;
+      color:white;
+      padding-left:10px;
+   }
+   #locationlog{
+      margin-bottom:20px;
+      width:70px;
+      height:70px;
+      border-right:1px solid #b1b1b1;
+      .image_style{
+	padding-left: 100px;
+	margin-top: -45px;
+      }
+   }
+   .attention{
+      margin-top:40px;
+      height:370px;
+      width:360px;
+      background:#f0f0f0;
+      .columinfo{
+         width:350px;
+         height:30px;
+         line-height:30px;
+         background:#a02208;
+         color:white;
+         padding-left:10px;
+      }
+   }
+}
+.sub_nav {
+   margin-top: -20px;
+   border-top: 5px #E23A26 solid;
+   height: 50px;
+   background-color: #9F0B0B;
+}
+.label_style{
+   margin-top:20px;
+}
+

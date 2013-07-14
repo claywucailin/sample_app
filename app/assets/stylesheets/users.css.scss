@@ -1,0 +1,284 @@
+@mixin set-font($font-col,$font-size: 12px, $font-type:"Microsoft YaHei,sans-serif") {
+  font-family: $font-type;
+  font-size: $font-size;
+  color: $font-col; }
+
+@mixin gray-separate-line-template($height) {
+  height: $height;
+  width: 1px;
+  background-color: #B1B1B1; }
+
+.my-account-container {
+  width: 1000px;
+  margin: 0 auto; }
+
+@mixin active-icon-template($height, $width) {
+  background: url("activeicon.png") no-repeat;
+  height: $height;
+  width: $width;
+  display: inline-block; }
+
+@mixin item-header($width) {
+  @include set-font(#1A1A1A, 12pt);
+  text-align: left;
+  width: $width; }
+
+@mixin list-type-radium-icon ($color){
+  border: 7px solid $color;
+  border-radius: 10px;
+  margin-right: 8px; }
+
+ul {
+  list-style-type: none; }
+
+.transfer-detail-header, .activity-outline-header {
+  height: 45px; }
+
+.transfer-detail-body, .activity-outline-body {
+  height: 265px; }
+
+.my-account-header {
+  height: 126px;
+  .welcome-title {
+    margin: 50px 0 40px 5px;
+    float: left;
+    width: 50%;
+    @include set-font(black, 36pt);
+    .active-icon {
+      @include active-icon-template(36px, 10px); }
+    .currentUser {
+      @include set-font(yellow, 36pt); } }
+  .my-account-operations {
+    float:right;
+    margin: 60px 40px 0 0;
+    ul {
+      li {
+        display: inline-block;
+        a {
+          @include set-font(#B1B1B1, 14px); } } }
+    .gray-separate-line {
+      margin: 0 14px;
+      @include gray-separate-line-template(18px); } } }
+
+.activity-container {
+  height: 330px;
+  .active-icon {
+    @include active-icon-template(25px, 5px); }
+  .gray-separate-line {
+    @include gray-separate-line-template(240px);
+    margin-right:40px;
+    float: left; }
+  .my-order {
+    width: 300px;
+    float:left;
+    margin-right: 20px;
+    .my-order-header {
+      background-color: #A0220A;
+      height: 30px;
+      @include set-font(white, 14px);
+      padding-left: 5px;
+      line-height: 31px; }
+    .my-order-body {
+      height:300px; } } }
+
+.header {
+    @include set-font(black, 24pt);
+    margin-left: 10px; }
+
+.activity-detail {
+  @include set-font(#B1B1B1, 12pt);
+  .activity-time  {
+    margin-top: 10px;
+    img {
+      margin-right: 10px; } }
+  .activity-location {
+    margin-top: 5px;
+    img {
+      margin:0 15px 0 3px; } } }
+
+.activity-outline-container {
+  width: 200px;
+  float: left;
+  .activity-sub-nav {
+    ul {
+      margin: 10px 0 0 0;
+      a {
+        text-decoration: underline;
+        @include set-font(#F9AE3B, 12pt); }
+      li {
+        margin-top: 5px; } } } }
+
+.active a{
+    @include set-font(#A0220A, 12pt);
+    text-decoration: none; }
+.inactive a{
+  @include set-font(#B1B1B1, 18px);
+  text-decoration: none; }
+
+.transfer-detail-container {
+  width: 400px;
+  float: left;
+  .activity-sub-header .ticket-amount {
+    @include set-font(#E23A36, 12pt); } }
+
+ .pagination-bar {
+  height: 20px;
+  ul {
+    margin: 0;
+    display: inline;
+    li {
+      display: inline; } } }
+
+.listing-items {
+  margin-top: 10px;
+  .listing-activity-header {
+    @include item-header(150px); }
+
+  .listing-time-header {
+    @include item-header(120px); }
+
+  .listing-price-header {
+    @include item-header(80px); }
+
+  .listing-amount-header {
+    @include item-header(80px); }
+
+  .listing-status-header {
+    @include item-header(33px); } }
+
+.sold {
+  color: #B1B1B1; }
+
+.on_sale {
+  color: #F9AE3B; }
+
+.sold_price, .sold_ticket_amount {
+  color: #B1B1B1;
+}
+
+.on_sale_price, .on_sale_ticket_amount {
+  color: #A0220A; }   
+
+.my-account-sec-container {
+  height: 170px;
+  margin-top: 50px;
+  .header {
+    float: left;
+    margin: 0; }
+  .my-favorite-operations {
+    float: left;
+    ul {
+      li {
+        display: inline-block;
+        a {
+          @include set-font(#B1B1B1, 14px); } } }
+    .gray-separate-line {
+      margin: 0 14px;
+      float: none;
+      @include gray-separate-line-template(18px); } }
+  .gray-separate-line {
+    float: left;
+    @include gray-separate-line-template(170px); } }
+
+.my-favorite-activity-container {
+  width: 500px;
+  height: 100%;
+  float:left;
+  .my-favorite-header {
+    height: 50px; }
+  .activity-predict-wrapper {
+    float: left;
+    height: 170px;
+    width: 80px;
+    margin-right: 20px;
+    .activity-predict-title {
+      padding: 5px 0;
+      @include set-font(white, 15px);
+      background-color: #A0220A;
+      text-align: center; } }
+  .my-favorite-contents {
+    li {
+      margin-bottom: 10px; }
+    .list-type-icon-01 {
+      @include list-type-radium-icon(rgb(240,177,15)); }
+    .list-type-icon-02 {
+      @include list-type-radium-icon(rgb(235,229,95)); }
+    li div {
+      display: inline-block; }
+    .my-favorite-activity-intro {
+      width: 245px;
+      img {
+        padding: 0 5px 5px 0; } }
+    .check-ticket-link {
+      float: right;
+      text-align: center;
+      width: 70px;
+      background-color: #B1B1B1;
+      margin: 0 50px auto 0;
+      a{
+      color: white; } }
+    li:first-child {
+      list-style-type: none;
+      .check-ticket-link {
+        background-color: #A0220A;
+        a{
+          color: white; } } } } }
+
+.manage-orders-container {
+  width: 460px;
+  float: right;
+  height: 100%;
+  margin-left: 10px;
+  .manage-orders-header {
+    height: 50px;
+    .manage-orders-operations {
+      float: left;
+      margin-left: 10px;
+    a {
+    font-size: 14pt; } }
+    li {
+      margin-bottom: 5px;
+      display: inline-block; }
+    .gray-separate-line {
+      margin: 0 14px;
+      float: none;
+      @include gray-separate-line-template(18px); }}
+  .order-post-wrapper {
+    float: left;
+    height: 170px;
+    width: 150px; }
+  .orders-detail {
+    margin-top: 15px;
+    a {
+      @include set-font(#F9AE3B, 12pt); } } }
+
+.recommend-and-last-browse-container {
+  margin: 50px 0 0 0;
+  @include set-font(#B1B1B1, 20px);
+  .active a {
+    @include set-font(black, 40px); }
+  .inactive a {
+    font-size: 40px; }
+  .recommend-product-operation {
+    height: 75px; }
+  .gray-separate-line {
+    float: left;
+    @include gray-separate-line-template(150px); }
+  height: 200px;
+  .left-title-bar {
+    float: left;
+    height: 100%;
+    margin-top: 10px;
+    width: 20%; }
+  .right-product-list {
+    width:70%;
+    height: 100%;
+    float: left; }
+  li {
+    width: 32%;
+    display: inline-block;
+    @include set-font(#A6A6A6, 12pt);
+    .activity-top {
+      margin-top: 20px; } } }
+
+

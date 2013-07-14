@@ -1,0 +1,14 @@
+= simple_form_for(@order) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :buyer_id
+    = f.input :shipment_method
+    = f.input :shipment_address
+    = f.input :payment_date
+    = f.input :payment_method
+    = f.input :total_amount
+    = f.input :shipment_date
+
+  .form-actions
+    = f.button :submit

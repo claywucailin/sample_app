@@ -1,0 +1,15 @@
+#event_info.fl.clearfix
+  = link_to image_tag("images.jpg"), root_path, :class => "image fl"
+
+  #event_detail.fl
+    %h3{ title: @event.title }
+      = @event.title.shorter(25)
+    #date
+      %span.day= @event.start_time.strftime("%d")
+      %span.month= @event.start_time.strftime("%m") + "月"
+      %span.year= @event.start_time.strftime("%Y")
+    %ul
+      %li= "地点:" + @event.venue.name
+      %li= "价格:30/60/90"
+    .share_to
+      = link_to image_tag("share_to.png"), '#'

@@ -1,0 +1,44 @@
+zh-CN:
+  listings:
+    show:
+      ship: '配送'
+      self: '自取'
+      checkout: '现在付款'
+  sellings:
+    new:
+      next_step: "下一步"
+      prev_step: "上一步"
+    index:
+      artist: "歌手"
+      sport_team: "球队"
+      time: "时间"
+      location: "地区"
+      artist_title: "%{start} - %{end} 歌手门票"
+      sport_team_title: "%{start} - %{end} 球队门票"
+    info_step:
+      info_step_title: '转让信息详细'
+      seat_type: "您的座位属于"
+      quantity: "数量"
+      split_type: "如何拆分"
+      section: "座位分区"
+      seat_no: "座位号"
+      row_no: "排数"
+      sequential_only: "只允许连号"
+      next_step: "下一步"
+      prev_step: "上一步"
+    pricing_step:
+      title: '设定你的票价'
+      price_info: '活动信息'
+      price_your_ticket: '请输入您的票价'
+      price_you_will_get: '查看您将得到的：'
+      reference: '参考数据'
+      list_price: '售价'
+      section: '区域'
+      row: '行号'
+      start_time: '时间'
+      next_step: "下一步"
+      prev_step: "上一步"
+    payment_step:
+      list_price: "出售价格：%(price)"
+      net_price: "您将获得：%(price)"
+      submit: "提交转让"

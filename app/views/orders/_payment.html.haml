@@ -1,0 +1,16 @@
+#payment
+  .sub_title
+    = image_tag "checkout_num_2.png"
+    付款方式
+  .content.hide
+    .pay_type
+      = f.collection_radio_buttons :payment_method, Order::PAYMENT_TYPE, :first, :last
+    .card_info
+      .card_num
+        = label_tag 'card_num', '银行卡号：'
+        = text_field_tag 'card_num', nil, class: 'input-large'
+      .card_addr
+        = label_tag 'card_addr', '银行卡地址：'
+        = text_field_tag 'card_addr', nil, class: 'input-large'
+    = link_to image_tag('checkout_next_step.png'), '#', id: "payment_next_step"
+

@@ -1,0 +1,60 @@
+.sessions {
+  #new_user {
+    input[type=submit]{
+        display:inline-block;
+        background:url("login.png");
+        width:121px;
+        height:50px;
+        border:none;
+    }
+    .forget-password {
+      margin-top: 20px;
+      display: block;
+      color: red;
+    }
+    .user_remember_me label.checkbox {
+      padding-left: 0;
+      input { margin: 5px 10px 0 0; }
+    }
+  }
+  .btn:hover, .btn:focus {
+      background-position: 0 0px;
+      transition: background-position 0.1s linear;
+  }
+  .link_bt{
+      display:block;
+      width:120px;
+      height:50px;
+      background:url(register.png);
+  }
+  .getActiveIcon{
+      padding-left:20px;
+      display:inline-block;
+      background:url(activeicon.png) no-repeat;
+      height:40px;
+    }
+  .first_input{
+      margin-right:50px;
+      width:222px;
+    }
+    .reg_content{
+      width:inherit;
+      height:auto;
+      margin:0 auto;
+    }
+    .postno{
+      margin-left:252px;width:222px;
+    }
+  .top_style{
+    margin-top:20PX;
+  }
+  input[type = "text"]{
+    background:#f0f0f0;
+    margin-top:67px;
+    margin-left:40px;
+  }
+  input[type = "checkbox"]{
+    padding:0;
+    margin:0;
+  }
+}

@@ -1,0 +1,4 @@
+ADMIN_NAME: Administrator
+ADMIN_EMAIL: sujianbo@gmail.com
+ADMIN_PASSWORD: 1234567890
+ROLES: [admin, seller, buyer]

@@ -1,0 +1,6 @@
+.container-fluid
+  .row-fluid
+    .span12
+      = render :partial => 'layouts/search_box'
+      = render :partial => 'layouts/carousel'
+= render :partial => "show_events", :locals => { :cat => @root }

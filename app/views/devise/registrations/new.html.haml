@@ -1,0 +1,59 @@
+.bgpic
+  .reg_content
+    %h2{:class => "getActiveIcon"} 创建您的账户
+    -#%form
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form_vertical'}) do |f|
+      %div
+        电子邮件：
+          %span{:style => "margin-left:215px;margin-top:0px;"}姓:
+          %span{:style => "margin-left:106px;"}名:
+        .top_style
+          %input.first_input{:type => "text"}/
+          %input.second_input{:type => "text",:style => "width:60px"}/
+          %input.third_input{:type => "text",:style => "width:90px"}/
+        .top_style
+          确定电子邮件：
+          %span{:style => "margin-left:185px; display:inline-block"} 地址:
+        .top_style
+          %input.first_input{:type => "text"}/
+          %input.second_input{:type => "text"}/
+        .top_style
+          密码：
+          %span{:style => "margin-left:240px; display:inline-block"} 城市:
+        .top_style
+          %input.first_input{:type => "text"}/
+          %input.second_input{:type => "text"}/
+        .top_style
+          确定密码：
+          %span{:style => "margin-left:210px; display:inline-block"} 省市:
+        .top_style
+          %input.first_input{:type => "text"}/
+          %input.second_input{:type => "text"}/
+        .top_style
+          手机号码：
+          %span{:style => "margin-left:211px; display:inline-block"} 国家:
+        .top_style
+          %input.first_input{:type => "text"}/
+          %input.second_input{:type => "text"}/
+        .top_style
+          %span{:style => "margin-left:285px; display:inline-block"} 邮编:
+        .top_style
+          %div{:style => "float:left"}
+            %div{:style => "line-height:20px;padding:0;"}
+              %input{:name => "select", :type => "checkbox"}
+              %span{:style => "margin-bottom:19px;margin-left:10px;"} 接受GoGo Piao网站定时更新
+            %br/
+            %div{:style => "line-height:20px;"}
+              %input{:name => "select", :type => "checkbox"}
+              %span{:style => "margin-left:10px;"}我已阅读并接受GOGO Piao用户协议
+          %div
+            %input{:style => "margin-left:33px;width:100px;", :type => "text"}/
+            %br/
+        %div{:style => "margin-top:50px"}
+          %input{:style => "margin-right:50px;width:120px;height:50px;margin-bottom:100px;", :type => "submit", :value => "",:class => "getImage"}/
+:javascript
+  $("input").focus(function(){
+    $(this).css("border","2px solid #9E1F08");
+  }).blur(function(){
+    $(this).css("border","2px solid #7E7E7E");
+  });

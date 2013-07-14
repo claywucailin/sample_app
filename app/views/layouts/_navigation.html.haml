@@ -1,0 +1,19 @@
+.top-menu
+  = link_to image_tag("Gogopiao.jpg"), root_path, :class => 'brand'
+  = render :partial => 'layouts/nav_account'
+.main-menu.clearfix
+  %ul.nav
+    %li.first
+      = link_to '首页', root_path
+    %li
+      - sport = Category.find_by_name('体育')
+      - concert = Category.find_by_name('音乐会')
+      = link_to sport.name , sport
+    %li
+      = link_to concert.name , concert
+    %li
+      = link_to '转让门票', sellings_path
+    %li
+      = link_to '我的账户', current_user
+    %li.last
+      = link_to '帮助', root_path

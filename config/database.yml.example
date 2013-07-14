@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  database: gogopiao_<%= Rails.env %>
+  username: gogopiao
+  password: gogopiao
+  host: 127.0.0.1
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

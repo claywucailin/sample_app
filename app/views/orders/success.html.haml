@@ -1,0 +1,66 @@
+.success
+  .mail
+    .mail-icon
+    .mail-content
+      %p
+        谢谢!您的订单已经完成
+      = label_tag "您的电子票已发到您的邮箱,请注意查收"
+  .order
+    .order-icon
+    .order-detail
+      .order-content
+        %p
+          订单详情
+        %table
+          %tr
+            %td 数量 :
+            %td  2张 
+          %tr
+            %td 单价 :
+            %td  100$
+          %tr
+            %td
+              总价 :
+            %td{:class => "ticket-count"}  
+              200$
+          %tr
+            %td 
+              区域 :
+            %td{:class => "seat-info"}   
+              南区 
+          %tr
+            %td 
+              座位 :
+            %td{:class => "seat-info"}   
+              4排22号
+          %tr
+            %td
+              球馆地址:
+            %td
+              东莞市南城区体育路3号
+        = link_to "打印电子票",nil,class:"line-right"
+        = link_to "查看电子票",nil,class:"line-left"
+      .event-detail
+        .red-banner
+        .event-pic
+          = image_tag "testPic.jpg"
+        .event-description
+          %p
+            = label_tag "广东华南虎"
+            VS 
+            = label_tag "佛山龙狮"
+          .location
+            = label_tag "东莞体育馆"
+          .time-day
+            = label_tag "2013年6月"
+          .time-clock
+            = label_tag "星期一晚上6点"
+  .instruction
+    .instruction-icon
+    .instruction-content
+      %p
+        说明:
+      = label_tag "1、球票只能当天使用、过期作废"
+      = label_tag "2、请确认打印完整的条形码进入球场"
+
+

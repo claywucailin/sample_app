@@ -1,0 +1,12 @@
+%ul.left_nav.fl
+  %li.top_category
+    %a 分类
+    - categories.each do |category|
+      %li.top_category{ :class => ("active" if category.id == current_category.id) }
+        = link_to category.name, category_path(category)
+      - category.sub_categories.each do |c|
+        %li{ :class => ("active" if c.id == current_category.id) }
+          = link_to c.name, category_path(c)
+          - if c != category.sub_categories.last
+            .separator_line
+

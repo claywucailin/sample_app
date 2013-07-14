@@ -1,0 +1,17 @@
+.tabbable.tabs-left
+  - @sub_cat = cat.sub_categories
+  %ul.nav.nav-tabs{ :id => "categoryTabs" }
+    - @sub_cat.each do |c|
+      %li
+        %a{:href => "#cat#{c.id}", "data-toggle" => "tab"}= c.name
+  .tab-content
+    - @sub_cat.each do |c|
+      .tab-pane{:id => "cat#{c.id}"}
+        - @events = Event.search({:category_id => c.id}).limit(9)
+        = render :partial => "common/event_list", :locals => {:events => @events}
+
+-#:javascript
+
+-#$(function () {
+  -#$('#categoryTabs a:first').tab('show')
+-#})

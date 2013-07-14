@@ -1,0 +1,159 @@
+- sanitize_params = params.select{|k,v| !['utf8','controller','action'].include?(k)} 
+#search-container
+  .left-side
+    = form_tag search_result_index_path(sanitize_params), method: :get do
+      = hidden_field_tag :search, params[:search]
+      .precise-search
+        .search-type-container.precise-search-header
+          .search-type-title 精确搜索
+        .search-type-container.search-type
+          .search-item-header
+            .search-type-title 类型
+          .search-item-content
+            %ul
+              -@types.each do |type|
+                %li
+                  %input{:type=>"radio",:name=>"category_id", :value => type.id}
+                  %label=type.name
+        .search-type-container.search-time
+          .search-item-header
+            .search-type-title  时间
+          .search-item-content
+            .start-time-field.date{"data-date-format"=>"yyyy/mm/dd",:id=>"start-time"}
+              %input{:type=>'text',:class=>"start-time-input"}
+              %button.start-time-btn.add-on
+            .time-separate-area
+              至
+            .end-time-field.date{"data-date-format"=>"yyyy/mm/dd",:id=>"end-time"}
+              %input{:type=>'text',:class=>"end-time-input"}
+              %button.end-time-btn.add-on
+        .search-type-container.search-location
+          .search-item-header
+            .search-type-title 地点
+          .search-item-content
+            %ul
+              -@locations.each do |location|
+                %li
+                  %input{:type=>"radio",:name=>"region_id", :value => location.id}
+                  %label=location.name
+        /
+          .search-type-container.search-game
+            .search-item-header
+              .search-type-title 比赛
+            .search-item-content
+              %ul
+                -@games["games"].each do |game|
+                  %li
+                    %input{:type=>"radio",:name=>"game"}
+                    %label=game["value"]
+        .search-type-container.search-price-interval
+          .search-item-header
+            .search-type-title 价格区间
+          .search-item-content
+            %ul
+              -@prices.each do |price|
+                %li
+                  %input{:type=>"radio",:name=>"price_range", value: price.last}
+                  %label=price.first
+  .right-side
+    .search-result-header
+      .search-icon-area
+      .search-question-description-container
+        -sq=params['search']
+        %span.search-question=sq
+        %span.search-tip 在您地区的搜索结果
+        .search-answer-summary
+          = "GoGo Piao为您找到#{@total_regional_events_count}票"
+      .last-game-container
+        .last-game-bar
+          = "最近#{Event.model_name.human}"
+        .last-game-content
+          = link_to @most_recent_regional_event.try(:title), event_path(id: @most_recent_regional_event.try(:id)) if @most_recent_regional_event
+    .search-result-body
+      %table
+        %thead.search-result-body-thead
+          %tr
+            -@headers["headers"].each do |header|
+              %td{:class=>"#{header["name"]}-item-header"}
+                %div{:class=>"#{header["name"]}-item-header-description"}
+                  %div=header["value"]
+        %tbody
+          -@regional_events.each_with_index do |item, index|
+            -class_type = index.even? ? "even-row" : "odd-row"
+            %tr
+              %td
+                %div{:class=>"game-item-description #{class_type}"}
+                  %div= link_to item.title, event_path(id: item.id)
+              %td
+                %div{:class=>"time-item-description #{class_type}"}
+                  %div=item.start_time.try(:to_date)
+              %td
+                %div{:class=>"location-item-description #{class_type}"}
+                  %div= link_to item.venue.try(:name), item.venue
+              %td
+                %div{:class=>"detail-item-description #{class_type}"}
+                  %div=item.description
+                  = button_tag "查票", class: "order-ticket", onclick: "window.location.href = '#{event_path(id: item.id)}';"
+      .pagination-bar
+        .pagination-container
+          .pagination-center
+            = paginate @regional_events
+
+    .mid-separate-area
+    .search-result-header.other-search-result-header
+      .search-question-description-container
+        %span.other-search-result-header-description其他搜索结果
+    .search-result-body
+      %table
+        %thead.search-result-body-thead
+          %tr
+            -@headers["headers"].each do |header|
+              %td{:class=>"#{header["name"]}-item-header"}
+                %div{:class=>"#{header["name"]}-item-header-description"}
+                  %div=header["value"]
+        %tbody
+          -@other_regional_events.each_with_index do |item, index|
+            -class_type = index.even? ? "even-row" : "odd-row"
+            %tr
+              %td
+                %div{:class=>"game-item-description #{class_type}"}
+                  %div= link_to item.title, event_path(id: item.id)
+              %td
+                %div{:class=>"time-item-description #{class_type}"}
+                  %div=item.start_time.try(:to_date)
+              %td
+                %div{:class=>"location-item-description #{class_type}"}
+                  %div= link_to item.venue.try(:name), item.venue
+              %td
+                %div{:class=>"detail-item-description #{class_type}"}
+                  %div=item.description
+                  = button_tag "查票", class: "order-ticket", onclick: "window.location.href = '#{event_path(id: item.id)}';"
+      .pagination-bar
+        .pagination-container
+          .pagination-center
+            = paginate @other_regional_events
+:javascript
+$(function(){
+  var dateStr = getDateString();
+  initDatePicker("#start-time", ".start-time-input", dateStr);
+  initDatePicker("#end-time", ".end-time-input", dateStr);
+
+  function initDatePicker(dpSelector, timeSelector, dateStr) {
+    var $datepicker = $(dpSelector),
+        $time = $(timeSelector);
+    $datepicker.attr("data-date",dateStr);
+    $time.val(dateStr);
+    $datepicker.datepicker({ 
+      onRender: function(date) {
+        var today = new Date();
+        return date.valueOf() < today.valueOf() ? 'disabled' : '';
+      }
+    });
+  }
+  function getDateString() {  //yyyy/mm/dd
+    var today = new Date(),
+        day = today.getDate(), mon = today.getMonth()+1, year = today.getFullYear(),
+        dateString = year +"/"+(mon > 9? mon: "0"+mon)+"/"+(day > 9? day : "0"+day);
+        return dateString
+  }
+})

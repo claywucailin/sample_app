@@ -1,0 +1,84 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+$grey: #d0d0d0;
+$red: #9e0b0b;
+
+/* Custom Overrides */
+body {
+  font-family: "微软雅黑", "黑体", Arial, Sans-serif;
+}
+.container, .navbar .container {
+  width: 1000px;
+}
+.nav {
+    margin-top:50px;
+}
+.navbar {
+  margin-bottom: 0;
+  .container {
+    height: 155px;
+    padding-bottom: 50px;
+
+  }
+  img {
+    width: 70px;
+    height: 30px;
+  }
+  .navbar-inner {
+    background: #000;
+    color: $grey;
+    border-bottom: 20px $red solid;
+  }
+}
+
+.navbar {
+  .nav {
+    li {
+      border-right: 1px grey solid;
+      a {
+        color: #ddd;
+        text-shadow: none;
+      }
+      a:focus, a:hover {
+        color: $red;
+      }
+    }
+    li.first {
+      border-left: none;
+    }
+    li.last {
+      border-right: none;
+    }
+  }
+}
+.tabbable{
+width:1000px;
+margin:20px auto;
+}
+.tabs-left {
+  > .nav-tabs {
+    padding-right: 55px;
+    margin-right: 0;
+    > li {
+      padding: 18px 0;
+      > a, > a:hover, > a:focus {
+        border: 0;
+      }
+      > a:hover, > a:focus {
+        color: $red;
+      }
+      > a {
+        color: #ccc;
+        font-size: 18px;
+        background-color: transparent;
+      }
+    }
+    .active > a {
+      color: $red;
+    }
+    .active > a:hover {
+      background-color: transparent;
+    }
+  }
+}

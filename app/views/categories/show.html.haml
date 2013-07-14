@@ -1,0 +1,5 @@
+#category_show.clearfix
+  = render :partial => "left_nav",
+    :locals => { :categories => @categories, :current_category => @category }
+  = render :partial => "event_and_performer",
+    :locals => { :events => @events, :performers => @performers }

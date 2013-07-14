@@ -1,0 +1,11 @@
+.sub_nav.clearfix
+  .sub_nav_inner
+    - category = event.category
+    = link_to_breadcrumb '首页', root_path
+    = breadcrumb_seperator
+
+    = link_to_breadcrumb category.name, category
+    = breadcrumb_seperator
+
+    = link_to_breadcrumb event.title, '#'
+

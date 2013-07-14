@@ -1,0 +1,27 @@
+%h1 Listing addresses
+
+%table
+  %tr
+    %th Addressable
+    %th Addressable type
+    %th Zipcode
+    %th Street address
+    %th Region
+    %th
+    %th
+    %th
+
+  - @addresses.each do |address|
+    %tr
+      %td= address.addressable_id
+      %td= address.addressable_type
+      %td= address.zipcode
+      %td= address.street_address
+      %td= address.region_id
+      %td= link_to 'Show', address
+      %td= link_to 'Edit', edit_address_path(address)
+      %td= link_to 'Destroy', address, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Address', new_address_path

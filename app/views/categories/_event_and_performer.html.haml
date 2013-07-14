@@ -1,0 +1,6 @@
+.event_and_performer.fl
+  = image_tag "ticket-count-image.jpg"
+  = render :partial => 'common/event_list', :locals => { :events => events }
+  = render :partial => "common/performer_list", :locals => { :performers => performers }
+
+  = paginate events, window: 1, outer_window: 1, theme: 'category'

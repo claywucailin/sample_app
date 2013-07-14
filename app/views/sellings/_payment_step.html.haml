@@ -1,0 +1,99 @@
+.order_content{:style => "margin-top: 50px"}
+  .order-header
+    %p
+      信息清单
+      = link_to "返回修改",'',class:"back-change"
+  .right_nav
+    %ul
+      %li{:style => "height:50px;"}
+      %li
+        = image_tag("Selling-search-gray.png")
+      %li
+        = image_tag("Selling-enter-gray.png")
+      %li
+        = image_tag("Selling-price-gray.png")
+      %li
+        = image_tag("Selling-pay.png")
+      %li
+        = image_tag("Selling-submit-gray.png")
+      %li
+  .info-content
+    .details
+      %table
+        %tr.event_color
+          %td.singer
+            = f.object.event.title
+          %td{:style => "width:200px"}
+            = image_tag "small_calendar.png"
+            = f.object.event.start_time.try(:to_date) 
+          %td{:style => "width:340px"}
+            = image_tag "little_location.png"
+            = f.object.event.venue.name
+        %tr
+          %td
+            /= t('.list_price', price: f.object.list_price)
+            出售价格:
+            %span.pay_reward_color 2000￥
+          %td.getReward
+            /= t('.net_price', price: f.object.net_price)
+            你将得到:
+            %span.pay_reward_color 500￥
+          %td
+        %tr
+          %td
+        %tr
+          %td
+        %tr
+          %td{:style => "border-bottom:1px solid #b1b1b1;margin-top:200px;"}
+          %td{:style => "border-bottom:1px solid #b1b1b1;margin-top:200px;"}
+    .main-info
+      .association-method.readonly
+        %p 联系方式
+        = link_to "编辑",'',class:"back-change",id:"contact_edit"
+        %br
+        = label_tag "联系人姓名:"
+        = text_field_tag "name","zhangshan",readonly:"readonly"
+        %br
+        %br
+        %br
+        = label_tag "电话:" 
+        = text_field_tag "name","zhangshan",readonly:"readonly"
+        %br
+        %br
+        %br
+        = label_tag "地址:" 
+        = text_field_tag "name","zhangshan",readonly:"readonly"
+        %br
+        %br
+        %br
+        = label_tag "电子邮件:" 
+        = text_field_tag "name","zhangshan",readonly:"readonly"
+      .pay-method.readonly
+        %p 付款方式
+        = link_to "编辑",'',class:"back-change",id:"pay_edit"
+        %br
+        = label_tag "付款方式:" 
+        = text_field_tag "pay-method","zhangshan", readonly:"readonly",name:"pay"
+        %br
+        %br
+        %br
+        = label_tag "银行卡信息:" 
+        = text_field_tag "card-owning","工商银行银行卡", readonly:"readonly",name:"pay"
+        %br
+        %br
+        %br
+        = label_tag "银行卡地址:" 
+        = text_field_tag "card-address","xx市xx区xx路xx号",readonly:"readonly",name:"pay"
+  .submit-tag
+    = check_box_tag "info-agree","我确认无误并同意转让"
+    %span &nbsp;&nbsp;我确认无误并同意转让
+    %br
+    %br
+    = check_box_tag "user-rule","我已阅读并接受GoGo Piao用户协议"
+    %span &nbsp;&nbsp;我已阅读并接受GoGo Piao用户协议
+    /%a{name: "submit", href: "javascript:void(0);", onclick: "javascript:document.getElementById('new_listing').submit();void(0);", class: "line-left"}
+    /  = t('.submit')
+    = hidden_field_tag 'submit', 1
+    = submit_tag ""
+/:javascript
+  

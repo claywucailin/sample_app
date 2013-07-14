@@ -1,0 +1,199 @@
+#search-container
+  .left-side
+    .precise-search
+      .search-type-container.precise-search-header
+        .search-type-title 精确搜索
+      .search-type-container.search-type
+        .search-item-header
+          .search-type-title 类型
+        .search-item-content
+          %ul
+            -@types["types"].each do |type|
+              %li
+                %input{:type=>"radio",:name=>"type"}
+                %label=type["value"] 
+      .search-type-container.search-time
+        .search-item-header
+          .search-type-title  时间
+        .search-item-content
+          .start-time-field.date{"data-date-format"=>"yyyy/mm/dd",:id=>"start-time"}
+            %input{:type=>'text',:class=>"start-time-input"}
+            %button.start-time-btn.add-on
+          .time-separate-area
+            至
+          .end-time-field.date{"data-date-format"=>"yyyy/mm/dd",:id=>"end-time"}
+            %input{:type=>'text',:class=>"end-time-input"}
+            %button.end-time-btn.add-on
+      .search-type-container.search-location
+        .search-item-header
+          .search-type-title 地点
+        .search-item-content
+          %ul
+            -@locations["locations"].each do |location|
+              %li
+                %input{:type=>"radio",:name=>"location"}
+                %label=location["value"]
+      .search-type-container.search-game
+        .search-item-header
+          .search-type-title 比赛
+        .search-item-content
+          %ul
+            -@games["games"].each do |game|
+              %li
+                %input{:type=>"radio",:name=>"game"}
+                %label=game["value"]
+      .search-type-container.search-price-interval
+        .search-item-header
+          .search-type-title 价格区间
+        .search-item-content
+          %ul
+            -@prices["prices"].each do |price|
+              %li
+                %input{:type=>"radio",:name=>"price"}
+                %label=price["value"]
+  .right-side
+    .search-result-header
+      .search-icon-area
+      .search-question-description-container
+        -sq="湖人"
+        %span.search-question=sq
+        %span.search-tip 在您地区的搜索结果
+        .search-answer-summary
+          GoGo Piao为您找到1137票
+      .last-game-container
+        .last-game-bar
+          最近比赛
+        .last-game-content
+          湖人VS火箭
+    .search-result-body
+      %table
+        %thead.search-result-body-thead
+          %tr
+            -@headers["headers"].each do |header|
+              %td{:class=>"#{header["name"]}-item-header"}
+                %div{:class=>"#{header["name"]}-item-header-description"}
+                  %div=header["value"]
+        %tbody
+          -5.times do |i|
+            -if i%2 == 0
+              -class_type="even-row"
+            -else
+              -class_type="odd-row"
+            %tr
+              %td
+                %div{:class=>"game-item-description #{class_type}"}
+                  %div=@results["game"]
+              %td
+                %div{:class=>"time-item-description #{class_type}"}
+                  %div=@results["time"]
+              %td
+                %div{:class=>"location-item-description #{class_type}"}
+                  %div=@results["location"]
+              %td
+                %div{:class=>"detail-item-description #{class_type}"}
+                  %div=@results["detail"]
+                  %button.order-ticket{:type=>"button"}查票
+      .pagination-bar
+        .pagination-container
+          .pagination-center
+            %ul
+              %li.disabled
+                %a{:href=>"#"} &laquo;
+              %li
+                %ul.page-numbers
+                  %li.active
+                    %a{:href=>"#"} 1
+                  %li
+                    %a{:href=>"#"} 2
+                  %li
+                    %a{:href=>"#"} 3
+                  %li
+                    %a{:href=>"#"} 4
+              %li
+                %a{:href=>"#"} &raquo;
+              %li
+                %input.specific-page-number-input &nbsp;/
+                %span.specific-page-number 4
+              %li
+                %button.turn-to-specific-page 转到
+    .mid-separate-area
+    .search-result-header.other-search-result-header
+      .search-question-description-container
+        %span.other-search-result-header-description其他搜索结果
+    .search-result-body
+      %table
+        %thead.search-result-body-thead
+          %tr
+            -@headers["headers"].each do |header|
+              %td{:class=>"#{header["name"]}-item-header"}
+                %div{:class=>"#{header["name"]}-item-header-description"}
+                  %div=header["value"]
+        %tbody
+          -5.times do |i|
+            -if i%2 == 0
+              -class_type="even-row"
+            -else
+              -class_type="odd-row"
+            %tr
+              %td
+                %div{:class=>"game-item-description #{class_type}"}
+                  %div=@results["game"]
+              %td
+                %div{:class=>"time-item-description #{class_type}"}
+                  %div=@results["time"]
+              %td
+                %div{:class=>"location-item-description #{class_type}"}
+                  %div=@results["location"]
+              %td
+                %div{:class=>"detail-item-description #{class_type}"}
+                  %div=@results["detail"]
+                  %button.order-ticket{:type=>"button"}查票
+      .pagination-bar
+        .pagination-container
+          .pagination-center
+            %ul
+              %li.disabled
+                %a{:href=>"#"} &laquo;
+              %li
+                %ul.page-numbers
+                  %li.active
+                    %a{:href=>"#"} 1
+                  %li
+                    %a{:href=>"#"} 2
+                  %li
+                    %a{:href=>"#"} 3
+                  %li
+                    %a{:href=>"#"} 4
+              %li
+                %a{:href=>"#"} &raquo;
+              %li
+                %input.specific-page-number-input &nbsp;/
+                %span.specific-page-number 4
+              %li
+                %button.turn-to-specific-page 转到
+
+:javascript
+$(function(){
+  var today = new Date(),
+      dateStr = getDateString();
+  initDatePicker("#start-time", ".start-time-input", dateStr);
+  initDatePicker("#end-time", ".end-time-input", dateStr);
+
+  function getDateString() {  //yyyy/mm/dd
+    var today = new Date(),
+        day = today.getDate(), mon = today.getMonth()+1, year = today.getFullYear(),
+        dateString = year +"/"+(mon > 9? mon: "0"+mon)+"/"+(day > 9? day : "0"+day);
+  }
+
+  function initDatePicker(dpSelector, timeSelector, dateStr) {
+    var $datepicker = $(dpSelector),
+        $time = $(timeSelector);
+    $datepicker.attr("data-date",dateStr);
+    $time.val(dateStr);
+    $datepicker.datepicker({ 
+      onRender: function(date) {
+        return date.valueOf() < today.valueOf() ? 'disabled' : '';
+      }
+    });
+  }
+})

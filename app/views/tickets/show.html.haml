@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Event:
+  = @ticket.event_id
+%p
+  %b Section:
+  = @ticket.section
+%p
+  %b Row:
+  = @ticket.row
+%p
+  %b Seat:
+  = @ticket.seat
+%p
+  %b Order:
+  = @ticket.order_id
+%p
+  %b Listing:
+  = @ticket.listing_id
+%p
+  %b Unit price:
+  = @ticket.unit_price
+
+= link_to 'Edit', edit_ticket_path(@ticket)
+\|
+= link_to 'Back', tickets_path

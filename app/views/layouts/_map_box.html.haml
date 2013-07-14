@@ -1,0 +1,7 @@
+#allmap.map.element
+  :javascript
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(#{x},#{y});
+    map.centerAndZoom(point, 15);
+    map.enableScrollWheelZoom();
+

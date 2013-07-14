@@ -1,0 +1,50 @@
+.selling_content
+  .left_container
+    %p
+      您想出售什么？
+    #searchbox
+      = text_field :'search', 'please input', class: 'long'
+      = submit_tag '',class:"search_style"
+    %span
+      活动浏览
+    %hr
+    .content_index
+      #concert
+        %span
+          = t('.artist')
+        %ul
+          - ('A'..'Z').each_slice(7).each do |elem|
+            %li= link_to t(".artist_title", start: elem.first, end: elem.last), performers_path({init_start: elem.first, init_end: elem.last, format: :json, type: "Artist"})
+      #sports
+        %span
+          = t('.sport_team')
+        %ul
+          - ('A'..'Z').each_slice(7).each do |elem|
+            %li= link_to t(".sport_team_title", start: elem.first, end: elem.last), events_path({init_start: elem.first, init_end: elem.last, format: :json, type: "SportTeam"})
+      #time
+        %span
+          = t('.time')
+        %ul
+          - (0..11).map{|elem| Date.today.at_beginning_of_month + elem.months }.each do |elem|
+            %li= link_to elem.strftime("%Y年%m月"), events_path({start_time: elem, end_time: elem.at_end_of_month})
+      #location
+        %span
+          = t('.location')
+        %ul
+          - Region.order_by_events_count.each do |elem|
+            %li= link_to elem.name, events_path({region_id: elem.id})
+    .display_content
+  .right_nav
+    %ul
+      %li{:style => "height:50px;"}
+      %li
+        = image_tag("Selling-search.png")
+      %li
+        = image_tag("Selling-enter-gray.png")
+      %li
+        = image_tag("Selling-price-gray.png")
+      %li
+        = image_tag("Selling-gray.png")
+      %li
+        = image_tag("Selling-submit-gray.png")
+      %li

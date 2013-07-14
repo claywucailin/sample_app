@@ -1,0 +1,270 @@
+@mixin set-font($font-col,$font-size: 12px, $font-type:"Microsoft YaHei,sans-serif") {
+  font-family: $font-type;
+  font-size: $font-size;
+  color: $font-col;
+}
+
+@mixin set-btn($background-color, $font-size, $font-col) {
+  background-color: $background-color;
+  font-size: $font-size;
+  color: $font-col;
+  border: none;
+}
+#search-container {
+  margin: 0px auto;
+  width: 980px;
+}
+
+.left-side {
+  float: left;
+  margin-right: 20px;
+  width: 240px;
+}
+
+.right-side {
+  float: left;
+  width:720px;
+}
+
+@mixin search-header($backgroundColor: #E23A36) {
+  @include set-font(#F0F0F0, 14px);
+  background-color: $backgroundColor;
+  height: 40px;
+  text-align: center;
+}
+.radio-checked {
+  padding-left: 20px;
+  background: url(radio-checked-01.png) no-repeat left top;
+  border: 0;
+  margin: 0;
+}
+
+.precise-search {
+  .search-type-title {
+    padding-top: 10px;
+  }
+  .precise-search-header {
+    @include search-header(#1A1A1A);
+  }
+
+  .search-item-header {
+    @include search-header();
+    margin: 2px 0;
+  }
+
+  .search-type-container {
+    margin: 0;
+  }
+
+  .search-item-content {
+    max-height: 112px; //TODO 400
+    padding: 20px;
+    @include set-font(black);
+    background-color: #F0F0F0;
+    overflow:auto;
+    ul {
+      list-style-type: none;
+      margin:0;
+      padding:0;
+      li {
+        list-style-type: none;
+        margin-bottom: 3px;
+        label {
+          display: inline;
+        }
+      }
+    }
+    .start-time-input, .end-time-input{
+      width: 140px;
+      margin-bottom: 0;
+    }
+
+    .time-separate-area {
+      padding: 5px 0;
+    }
+
+    .start-time-field{
+      margin-top: 10px;
+    }
+    .end-time-field {
+      margin-bottom: 10px;
+    }
+    @mixin set-time-btn($url) {
+      background: url($url) no-repeat;
+      height: 22px;
+      width: 22px;
+      float: right;
+      margin: 4px 20px 0 0;
+    }
+    .start-time-btn{
+      @include set-time-btn("日历按钮-1-01.png");
+    }
+    .end-time-btn{
+      @include set-time-btn("日历按钮-31-01.png");
+    }
+  }
+}
+
+.search-item-content::-webkit-scrollbar {
+  width: 20px;
+  background: url("滚动条背景-01.png") repeat-y;
+}
+
+.search-item-content::-webkit-scrollbar-button:start:decrement {
+  background: url("上拉按钮-01.png") no-repeat;
+}
+.search-item-content::-webkit-scrollbar-button:end:increment {
+  background: url("下拉按钮-01.png") no-repeat;
+}
+.search-result-header {
+  background-color: #333333;
+  color:white;
+  height: 100px;
+  margin-bottom: 3px;
+  .search-icon-area {
+    background:#333333 url(search-icon-01.png) no-repeat;
+    height: 61px;
+    width: 61px;
+    float:left;
+    margin: 20px;
+  }
+  .search-question-description-container {
+    float: left;
+    margin-left: 5px;
+    margin-top: 35px;
+    .search-question {
+      @include set-font(#E23A36,24px);
+      float: left;
+    }
+    .search-tip {
+      @include set-font(#F0F0F0,18px);
+      float: right;
+    }
+    .search-answer-summary {
+      @include set-font(#808080, 12px);
+    }
+  }
+  .last-game-container {
+    width: 150px;
+    float: right;
+    height:100%;
+  }
+  .last-game-bar {
+    margin-top: 30px;
+    @include set-font(#808080, 12px);
+  }
+  .last-game-content {
+    margin-top: 3px;
+    @include set-font(#FF911E, 12px);
+  }
+}
+
+.search-result-body {
+  clear: both;
+  tr {
+    .game-item-header {
+      width: 270px;
+    }
+    .time-item-header, .location-item-header, .detail-item-header {
+      width: 150px;
+    }
+  }
+  @mixin item-description ($width, $color, $font-size, $background-color:0, $pad-top: 30px){
+    @if $background-color!= 0 {background-color: $background-color;}
+    height: 80px;
+    width: $width;
+    text-align: center;
+    div{
+      padding-top: $pad-top;
+    }
+    @include set-font($color, $font-size);
+  }
+  .game-item-header-description {
+    @include item-description(268px,white, 18px, #E23A36);
+  }
+  .time-item-header-description, .location-item-header-description{
+    @include item-description(148px, white, 18px, #E23A36);
+  }
+  .detail-item-header-description {
+    @include item-description(150px, white, 18px, #E23A36);
+  }
+
+  .game-item-description {
+    @include item-description(268px, #4D4D4D, 12px);
+  }
+  .time-item-description, .location-item-description{
+    @include item-description(148px, #4D4D4D, 12px);
+  }
+  .detail-item-description {
+    @include item-description(150px, #4D4D4D, 12px, 0, 15px);
+    .order-ticket {
+      @include set-btn(#E23A36, 12px, white);
+    }
+  }
+
+  .pagination-bar {
+    background-color: #1A1A1A;
+    height: 50px;
+    .pagination-container {
+      width: 500px;
+      max-width: 720px;
+      padding-top: 15px;
+      margin:0 auto;
+    }
+    .pagination-center {
+      width:70%;
+      margin:0 auto;
+      text-align: center;
+    }
+    li {
+      display: inline;
+    }
+    ul {
+      display: inline;
+      margin: 0;
+      li {
+        @include set-font(white,25px);
+        a {
+          @include set-font(#F0F0F0, 18px);
+        }
+        input {
+          padding: 0;
+          margin: 0;
+        }
+      }
+      list-style-type: none;
+    }
+    .specific-page-number-input {
+      width: 30px;
+    }
+    .turn-to-specific-page{
+      @include set-btn(#E23A36,12px, white);
+    }
+  }
+}
+
+.other-search-result-header {
+  background: linear-gradient(#333333, #1A1A1A 50%, #000000);
+  background: -moz-linear-gradient(#333333,#1A1A1A 50%, #000000);
+  background: -webkit-gradient(linear, center top, center bottom, from(#333333), color-stop(0.5,#1A1A1A), to(#000000));
+  background: -webkit-linear-gradient(#333333, #1A1A1A 50%, #000000);
+  background: -o-linear-gradient(#333333, #1A1A1A 50%, #000000);
+  background: -ms-linear-gradient(#333333, #1A1A1A 50%, #000000);
+}
+
+.other-search-result-header-description {
+  margin-left: 30px;
+  @include set-font(white, 30px);
+}
+.odd-row {
+  background-color:#E4E4E4;
+}
+.even-row {
+  background-color:#F0F0F0;
+}
+
+.mid-separate-area {
+  height: 20px;
+}
+
+

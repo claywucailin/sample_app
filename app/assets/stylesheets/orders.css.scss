@@ -1,0 +1,300 @@
+$black:#1A1A1A;
+$grey:#B1B1B1;
+$red:#E23A36;
+$yellow: #F9AE3B;
+
+@mixin label-like($label_width) {
+  width: $label_width;
+  display: inline-block;
+}
+
+.checkout {
+  color: $black;
+  .content {
+    overflow: hidden;
+  }
+  #info {
+    width: 440px;
+    > div {
+      width: 100%;
+    }
+    .title {
+      font-size: 36px;
+      margin: 30px 0 50px;;
+      line-height: 36px;
+    }
+    .event_info {
+      overflow: hidden;
+      margin-bottom: 41px;
+      > div {
+        height: 80px;
+        float: left;
+      }
+      .date {
+        float: left;
+        font-size: 18px;
+        width: 150px;
+        line-height: 24px;
+        .wday {
+          font-size: 36px;
+          line-height: 54px;
+        }
+      }
+      .place_time {
+        padding-left: 25px;
+        width: 190px;
+        border-left: 1px solid $grey;
+        color: $grey;
+        > div {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .seat_info {
+      font-size: 12px;
+      margin-bottom: 40px;
+      span.seat_label {
+        display: inline-block;
+        width: 60px;
+        margin-right: 15px;
+      }
+      span.seats {
+        color: $yellow;
+      }
+      span.price {
+        color: $red;
+      }
+    }
+    .ad {
+      height: 120px;
+      margin-bottom: 30px;
+      }
+    .protection {
+      margin-bottom: 50px;
+      height: 240px;
+    }
+  }
+  #ship_payment {
+    width: 500px;
+    span {
+      @include label-like(100px);
+    }
+    .sub_title {
+      margin: 20px 0;
+      font-size: 24px;
+    }
+    #ship {
+      .info {
+        margin: 20px 0;
+        span.ship_label {
+          color: $grey;
+        }
+      }
+    }
+    #payment {
+      .pay_type span {
+        width: 150px;
+        label {
+          margin-left: 10px;
+          display: inline-block;
+        }
+      }
+      .card_info {
+        margin: 50px 0;
+        label {
+          @include label-like(90px);
+        }
+      }
+    }
+    #confirm {
+      .info > div {
+        margin: 10px 0;
+        span { color: $grey; }
+      }
+    }
+  }
+}
+
+body.orders {
+  .content {
+    margin-top: 50px;
+  }
+  .success{
+    overflow: hidden;
+    margin-left: 50px;
+    .mail{
+      float:left;
+      height:150px;
+      margin-bottom:50px;
+      .mail-icon{
+        float:left;
+        width:80px;
+        height:80px;
+        display:inline-block;
+        background:url(mail.png);
+      }
+      .mail-content{
+        margin-left:50px;
+        float:left;
+        height:150px;
+        border-bottom:1px solid #b1b1b1;
+        width:700px;
+        display:inline-block;
+        p{
+          height:40px;
+          background:url(activeicon.png) no-repeat;
+          padding-left:30px;
+          font-size:30pt;
+          line-height:40px;
+          margin-bottom:50px;
+        }
+        label{
+          font-size:20px;
+          color:#B1B1B1;
+        }
+      }
+    }
+    .order{
+      float:left;
+      height:670px;
+      width:830px;
+      .order-icon{
+        float:left;
+        width:80px;
+        height:80px;
+        display:inline-block;
+        background:url(rectangle-money.png);
+      }
+      .order-detail{
+        margin-left:48px;
+        float:left;
+        width:700px;
+        height:600px;
+        border-bottom:1px solid #b1b1b1;
+        .order-content{
+          float:left;
+          width:400px;
+          height:500px;
+          p{
+            font-size:24pt;
+            line-height:40px;
+            margin-bottom:22px;
+          }
+          table{
+            margin:0;
+            padding:0px;
+            tr td {
+              width: auto;
+              padding-bottom: 50px;
+              text-align: left;
+              font-size: 20px;
+              padding-top: 5px;
+              color:#B5B5B5;
+            }
+            .ticket-count{
+              color:red;
+            }
+            .seat-info{
+              color:#FBC068;
+            }
+          }
+          a{
+            color:#E1312F;
+            font-size:20px;
+          }
+          .line-right{
+            display: inline-block;
+            padding-right: 20px;
+            border-right: 1px solid #B3B3B3;
+          }
+          .line-left{
+            padding-left: 20px;
+          }
+        }
+        .event-detail{
+          float:left;
+          width:297px;
+          height:500px;
+          .red-banner{
+            float:left;
+            width:27px;
+            background:#A0220B;
+            height:150px;
+          }
+          .event-pic{
+            float:right;
+            width:270px;
+            height:150px;
+          }
+          .event-description{
+            float:left;
+            width:230px;
+            height:250px;
+            margin-top:40px;
+            font-size:20px;
+            color:#b5b5b5;
+            label{
+              display:inline-block;
+              font-size:20px;
+              color:#FBC068;
+            }
+            .location{
+              label{
+                color:#b5b5b5;
+              }
+              margin-top:40px;
+              padding-left:40px;
+              background:url(big-location.png) no-repeat;
+            }
+            .time-day{
+              label{
+                color:#b5b5b5;
+              }
+              margin-top:40px;
+              padding-left:40px;
+              background:url(payment-colock.png) no-repeat;
+            }
+            .time-clock{
+              label{
+                color:#b5b5b5;
+              }
+              margin-top:40px;
+              padding-left:40px;
+              background:url(payment-calenda.png) no-repeat;
+            }
+          }
+        }
+      }
+    }
+    .instruction{
+      float:left;
+      height:200px;
+      width:830px;
+      margin-bottom:50px;
+      .instruction-icon{
+        float:left;
+        width:80px;
+        height:80px;
+        display:inline-block;
+        background:url(description.png);
+      }
+      .instruction-content{
+        float:left;
+        width:600px;
+        height:150px;
+        margin-left:48px;
+        p{
+          font-size:24pt;
+          line-height:40px;
+          margin-bottom:22px;
+        }
+        label{
+          font-size:20px;
+          color:#b1b1b1;
+          margin-bottom:50px;
+        }
+      }
+    }
+  }
+}
+

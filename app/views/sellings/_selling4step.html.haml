@@ -1,0 +1,120 @@
+#step4
+  .selling_content
+    .left_container
+      %p
+        = t('转让信息信息')
+      .transform
+        .sider-nav
+          您的座位属于
+        .sider-nav
+          数量
+        .sider-nav
+          如何拆分
+        .seats-division
+          座位分区
+        .sider-nav
+          排数
+        .sider-nav
+          座位号
+      .transform-info
+        #seat-info
+          = f.input_field :seat_type, as: :radio_buttons, :item_wrapper_class => 'inline', collection: Listing.seat_type_list,{:style => "padding-left:0px;"}
+        #count-info
+          = f.input_field :tickets_count
+        #how-division
+          = radio_button_tag "listing[split_type]", 1
+          = label_tag '只要不留下单张即可', nil, class:'radio_style'
+          %br
+          %br
+          = radio_button_tag "listing[split_type]", 2
+          = label_tag '以', nil, class:'radio_style',{:style => "display:inline-block"}
+          = f.input_field :split_divisor, collection: [1,2,3,4,5]
+          = select_tag "count", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe,:class => "count_select"
+          倍拆分
+          %br
+          %br
+          = radio_button_tag "listing[split_type]", 2
+          = radio_button_tag "listing[split_type]", checked:"checked"
+          = label_tag '不做任何拆分', nil, class:'radio_style'
+        #seat-division
+          = text_field_tag "section",nil
+        #row-no
+          = text_field_tag "section",nil
+        #seat-no
+        #warm_tips
+          (只允许连好)
+      .event-detail
+        .event-content
+          .event-left
+            活动信息
+          .event-right
+            = label_tag 'actor','五月天回到火星表面'
+            = label_tag 'time','2013年6月31号',class:'time_table'
+            = label_tag 'location','xxx体育场',class:'event_location'
+
+    .right_nav
+      %ul
+        %li{:style => "height:50px;"}
+        %li
+          = image_tag("Selling-search-gray.png")
+        %li
+          = image_tag("Selling-enter.png")
+        %li
+          = image_tag("Selling-price-gray.png")
+        %li
+          = image_tag("Selling-gray.png")
+        %li
+          = image_tag("Selling-submit-gray.png")
+        %li
+    .link_tostyle
+      = link_to "返回上一级",nil,class:"line-right"
+      = link_to "下一步",nil,id:"to_5step"
+:javascript
+  $("input[name = 'seat_type']").each(function() {
+    if ($(this).attr('checked')) {
+      $(this).hide();
+      $(this).after($("<img src='/assets/radio-checked-01.png' style ='width:17px;height:18px;margin-left:40px;'name = 'seat_bt'/>"));
+    } else {
+      $(this).hide();
+      $(this).after($("<img src='/assets/radio-unchecked.png' style ='width:17px;height:18px;margin-left:40px;'name = 'seat_bt'/>"));
+    }
+  })
+  $("img[name='seat_bt']").click(function(){
+    $("img[name = 'seat_bt']").attr("src","/assets/radio-unchecked.png");
+    $("img[name = 'seat_bt']").prev().attr('checked',false);
+    $(this).attr("src","/assets/radio-checked-01.png").prev()
+    $(this).prev().attr('checked',true);
+  });
+
+
+  $("input[name = 'division_type']").each(function() {
+    if ($(this).attr('checked')) {
+      $(this).hide();
+      $(this).after($("<img src='/assets/radio-checked-01.png' style ='width:17px;height:18px;margin-left:40px;'name = 'division_bt'/>"));
+    } else {
+      $(this).hide();
+      $(this).after($("<img src='/assets/radio-unchecked.png' style ='width:17px;height:18px;margin-left:40px;'name = 'division_bt'/>"));
+    }
+  })
+  $("img[name='division_bt']").click(function(){
+    $("img[name = 'division_bt']").attr("src","/assets/radio-unchecked.png");
+    $("img[name = 'division_bt']").prev().attr('checked',false);
+    $(this).attr("src","/assets/radio-checked-01.png").prev()
+    $(this).prev().attr('checked',true);
+  });
+
+
+
+  $("input[name = 'tickets_count']").blur(function(){
+    var ticket_no = $(this).val();
+    for(i = 0; i < ticket_no; i++){
+      $("#seat-no").append("<input class = 'common_left' type = 'text' id = seat_no"+i+" name = seat_no/>");
+    }
+  });
+
+  $("#to_5step").click(function(e){
+    e.preventDefault();
+    $("#step4").hide();
+    $("#step5").show();
+  });
+

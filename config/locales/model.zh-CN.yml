@@ -1,0 +1,28 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        listing:
+          tickets_count_not_equals_to_seats_count: "所列的票号数量与座位号数量不一样"
+
+    attributes:
+      listings:
+        SEAT_TYPE:
+          with_seat_details: 有具体座位的
+          with_out_seat_details: 无具体座位信息（如站票等）
+        SPLIT_TYPE:
+          no_orphan: 只要不留下单张即可
+          split_with: 以倍数拆分
+          no_split: 不做任何拆分
+    models:
+      musical_event:
+        one: "演唱会"
+        other: "演唱会"
+      sport_event:
+        one: "体育赛事"
+        other: "体育赛事"
+      listing:
+        list_price: "价格"
+        section: "分区"
+        row: "行号"
+        start_time: "日期"

@@ -1,62 +1,38 @@
-SampleApp::Application.routes.draw do
-  get "static_pages/home"
+Gogopiao::Application.routes.draw do
+  get "search_result/index"
 
-  get "static_pages/help"
+  get "search/index"
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  #resources :addresses
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :sellings
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :categories
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :regions
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  resources :orders do
+    get :success, :on => :member
+  end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  resources :performers, only:[:index]
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+  match '/checkout' => 'orders#checkout'
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :events, only: [:index, :show] do
+    resources :listings do
+      get :calculate_net_price, on: :collection
+      get :on_sale, on: :collection, action: "index_on_sale"
+    end
+  end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  resources :venues
 
-  # See how all your routes lay out with "rake routes"
+  get '/api/v1/events' => 'api_events#index'
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  resources :search_result
+
+  root :to => "home#index"
+  devise_for :users
+  resources :users, only:[:show, :index]
 end

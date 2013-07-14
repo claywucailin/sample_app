@@ -1,0 +1,10 @@
+- content_for :sub_nav do
+  = render :partial => "sub_nav"
+%p#notice= notice
+.active_container
+  %h2
+    具体座位信息
+= render :partial => 'sidebar'
+= render :partial => 'info'
+= render :partial => 'map_and_notice'
+

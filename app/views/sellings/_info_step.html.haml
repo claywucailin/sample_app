@@ -1,0 +1,74 @@
+%div
+  .selling_content
+    .left_container
+      %p
+        = t('.info_step_title')
+        = f.input_field :event_id, as: :hidden
+      .transform
+        .sider-nav
+          = t('.seat_type')
+        .sider-nav
+          = t('.quantity')
+        .sider-nav
+          = t('.split_type')
+        .seats-division
+          = t('.section')
+        .sider-nav
+          = t('.row_no')
+        .sider-nav
+          = t('.seat_no')
+        .operation
+          %a{name: "previous_button", href: "javascript:void(0);", onclick: "javascript:history.back(-1);void(0);", class: "line-right"}
+            = t('.prev_step')
+          %a{name: "submit", href: "javascript:void(0);", onclick: "javascript:document.getElementById('new_listing').submit();void(0);", class: "line-left"}
+            = t('.next_step')
+      .transform-info
+        #seat-info
+          /= f.input_field :seat_type, as: :radio_buttons,  collection: Listing.seat_type_list
+          = radio_button_tag "listing[seat_type]", 1, true, {:style => "display:inline-block"} 
+          = label_tag '有具体座位的', nil, class:'radio_style'
+          %br
+          %br
+          = radio_button_tag "listing[seat_type]", 2, false, {:style => "display:inline-block"}
+          = label_tag '无具体座位的', nil, class:'radio_style'
+        #count-info
+          = f.input_field :tickets_count
+        #how-division
+          = radio_button_tag "listing[split_type]", 1,{:style => "display:inline-block"}
+          = label_tag '只要不留下单张即可', nil, class:'radio_style'
+          %br
+          = radio_button_tag "listing[split_type]", 2
+          = label_tag '以', nil, class:'radio_style'
+          = f.input_field :split_divisor, collection: [1,2,3,4,5]
+          倍拆分
+          %br
+          = radio_button_tag "listing[split_type]", checked:"checked"
+          = label_tag '不做任何拆分', nil, class:'radio_style'
+        #seat-division
+          = f.input_field :section
+        #row-no
+          = f.input_field :row
+        #seat-no
+         
+        #warm_tips
+          = t('.sequential_only')
+      .event-detail
+        .event-content
+          .event-left
+            活动信息
+          .event-right
+            = label_tag 'actor','五月天回到火星表面'
+            = label_tag 'time','2013年6月31号',class:'time_table'
+            = label_tag 'location','xxx体育场',class:'event_location'
+    .right_nav
+      %ul
+        %li{style: "height:50px;"}
+        %li= image_tag("Selling-search.png")
+        %li= image_tag("Selling-enter-gray.png")
+        %li= image_tag("Selling-price-gray.png")
+        %li= image_tag("Selling-gray.png")
+        %li= image_tag("Selling-submit-gray.png")
+        %li
+
+  
+

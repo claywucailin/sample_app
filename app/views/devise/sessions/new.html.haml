@@ -1,0 +1,19 @@
+%div{:style => "width:800px;margin:0 auto;"}
+  %div{:style => "float:left;padding-left;200px"}
+    %div{:style => "font-size:24px;padding-right:200px;color:1a1a1a"}
+      %span{:style => "padding-right:200px;display:inline-block"} 登录
+      %div{:style => "font-size:18px;margin-top:50px;color:1a1a1a"}
+        %span{:style => "padding-right:168px;display:inline-block;padding-bottom:20px;"}已经注册?
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+      = f.input :email, :label => "电子邮件:",:autofocus => true,:style => "margin-top:20px;margin-bottom:20px"
+      = f.input :password, :label => "密码:"
+      = f.input :remember_me, label: false, inline_label: "记住我", :as => :boolean if devise_mapping.rememberable?
+      = f.button :submit, ""
+      = link_to "忘记密码？", new_password_path(resource_name), :class => "forget-password"
+    /= render "devise/shared/links"
+  %div{:style => "float:left"}
+    %div{:style => "font-size:24px;color:1a1a1a"}
+      %span{:style => "padding-right:200px;display:inline-block"} 新用户
+      %div{:style => "font-size:18px;margin-top:50px;color:1a1a1a"}
+        %span{:style => "padding-right:168px;display:inline-block;padding-bottom:20px;"}GoGo Piao的新用户
+    = link_to "", new_registration_path(resource_name),:class => "link_bt"

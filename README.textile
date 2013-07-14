@@ -1,0 +1,98 @@
+h1. Gogopiao 票集网
+
+由 @boboism 进行数据构建
+开发时期: 2013年6月底至7月底 alpha版
+
+h2. 概述
+
+p. Gogopiao是一个在线的二手票务交易平台。持有空余二手票的卖家可以通过平台发布转让信息，其他人可以了解到转让信息并在线予以购买
+
+p. alpha版本并不推出在线支付的功能(需要完成注册后打通支付宝及网银的API 需要时间)
+
+p. 支付功能在线下
+
+h2. 项目负责
+
+* PM: 汪子俊 @alexhsfz
+* 数据架构: @boboism
+* 前端负责: @allenfantasy
+
+h2. Gogopiao具体设计
+
+Gogopiao是类似于["Stubhub":http://www.stubhub.com]的线上电子票务二手平台，主要针对国内大量需要购买二手票以满足观看演唱会、体育比赛等活动的歌迷/球迷。
+定位人群为15-30岁的学生/白领，熟悉并常用移动互联网。
+
+h3. 业务流程:
+
+* 卖家发布转让票信息 -> 买家线上检索所需票信息 -> 买家下单购买 -> 卖家送票到Gogopiao(线下) -> 买家取到票(线下) -> 买家线上确认付款(或自动付款) -> 交易完成
+
+h3. 具体数据设计
+
+根据业务流程
+
+h3. ER图
+
+!erd.jpg!
+
+h2. Gogopiao开发
+
+h3. Rails环境
+
+* Ruby版本: 1.9.3-p448
+* Rails版本: 3.2.13
+
+h3. 数据库
+
+* 使用PostgreSQL作为数据库（development / test / production ）
+* ORM使用默认的ActiveRecord
+
+h3. 配置安装
+
+* 安装PostgreSQL
+* 将config/ 下的所有类似*.yml.example的文件复制一份，修改后缀为.yml
+* 修改新建的config/database.yml文件: 将username和password修改成自己本机的postgres的用户名密码
+* 执行以下命令: @rake db:setup@
+
+h3. 开发工具
+
+* 模板引擎使用["Haml":http://haml.info]
+* 测试框架: RSpec and Factory Girl
+* 前端暂时使用Twitter Bootstrap (Sass)
+* 构建表单的gem: SimpleForm
+* 用户验证: Devise
+* 用户权限控制: CanCan
+
+h3. 邮件
+
+The application is configured to send email using a SMTP account.
+
+h3. 开发注意事项
+
+目前的repo是把大家都加进来作为collaborator的，但不希望大家直接在这个repo上工作。请大家先把代码fork到自己的github上
+
+h4. 流程
+
+# 在Trello上领取卡片
+# 明确卡片需求(正常情况下都在trello上提问)
+# 抓取最新的代码
+# 运行: @bundle install@ 更新gem
+# 刷新数据架构(非必要)
+# 在本地新建一个分支: @git checkout -b feature@
+# 怒写代码一整天
+# 把代码push到自己的github上
+# 提交pull request
+# 开始煲剧/动漫/Dota/LOL...
+
+刷新数据架构方法:
+
+bc.. rake db:drop
+rake db:setup
+
+h3. 文档及支持
+
+见Trello开发版[开发前必读]
+
+h3. Issues
+
+h3. License
+

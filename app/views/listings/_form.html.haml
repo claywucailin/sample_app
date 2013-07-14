@@ -1,0 +1,12 @@
+= simple_form_for [@event, @listing] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :split_type
+    = f.input :seller_id
+    = f.input :status
+    = f.input :tickets_count
+    = f.input :event_id
+
+  .form-actions
+    = f.button :submit

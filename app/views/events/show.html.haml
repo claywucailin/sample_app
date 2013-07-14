@@ -1,0 +1,13 @@
+- content_for :sub_nav do
+  = render :partial => "sub_nav", :locals => { event: @event }
+#event_show
+  %p#notice= notice
+
+  .info_and_map.clearfix
+    =render :partial => "info_and_map"
+
+  .options.clearfix
+    = render :partial => "options"
+
+  .seat_and_ticket.clearfix
+    = render :partial => "seat_and_ticket"

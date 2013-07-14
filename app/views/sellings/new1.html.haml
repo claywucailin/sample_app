@@ -1,0 +1,73 @@
+.selling_content
+  .left_container
+    %p
+      设定您的票价
+    .priceDesign
+      #price-info
+        活动信息
+      .event_info
+        .event_name
+          五月天飞到地球
+        .time
+          2013年6月31号
+        .address
+          xxxxx体育场
+      #price_input
+        %div
+          .tip_style 
+            请输入您的票价：
+          = text_field_tag "price"
+          = link_to "查看你将得到的"
+      .result_content
+        .reference_content
+          #ref_nav
+            参考数据
+          .price_detail
+            %div{:style => "font-size:20px;margin-left:42px;margin-bottom: 20px;padding:0px;margin-top:30px;"}
+              = link_to "已售","sall",{:style => "display:inline-block;border-right:1px solid #c6c6c6;padding-right:20px;"}
+              = link_to "未售","unsell",{:style => "color:#c6c6c6;padding-left:10px;"}
+            %table
+              %tr
+                %td{:style => "margin:0px;padding:0;"} 价格
+                %td{:style => "margin:0px;padding:0;"} 行号
+                %td{:style => "margin:0px;padding:0;"} 数量
+
+                %td 日期
+              %tr
+                %td 500$
+                %td 7
+                %td 5
+                %td 2013.06.25
+              %tr
+                %td 500$
+                %td 7
+                %td 5
+                %td 2013.06.25
+              %tr
+                %td 500$
+                %td 7
+                %td 5
+                %td 2013.06.25
+              %tr
+                %td 500$
+                %td 7
+                %td 5
+                %td 2013.06.25
+        .seats_table
+        .next_step
+          = link_to "返回上一级","return",{:style => "display:inline-block;border-right:1px solid #c6c6c6;padding-right:20px;"}
+          = link_to "下一步","next",{:style => "color:#c6c6c6;padding-left:10px;"}
+  .right_nav
+    %ul
+      %li{:style => "height:50px;"}
+      %li
+        = image_tag("Selling-search-gray.png")
+      %li
+        = image_tag("Selling-enter-gray.png")
+      %li
+        = image_tag("Selling-price.png")
+      %li
+        = image_tag("Selling-gray.png")
+      %li
+        = image_tag("Selling-submit-gray.png")
+      %li

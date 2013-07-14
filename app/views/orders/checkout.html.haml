@@ -1,0 +1,3 @@
+= render :partial => 'listing_info', :locals => { event: @event, listing: @listing, tickets_amount: params[:tickets_amount].to_i }
+= render :partial => 'ship_and_payment', :locals => { tickets_amount: params[:tickets_amount].to_i, shipment_method: params[:shipment_method] }
+

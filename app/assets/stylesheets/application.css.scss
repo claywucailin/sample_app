@@ -1,0 +1,114 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+/* Global Style */
+$grey: #d0d0d0;
+$red: #9e0b0b;
+
+.content {
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+}
+.clearfix {
+  clear: both;
+}
+
+/* Nav Bar */
+.navbar {
+  .top-menu {
+    overflow: hidden;
+    margin-top: 30px;
+    .nav > li > a {
+      font-size: 12px;
+      padding: 0 15px;
+    }
+  }
+  .main-menu {
+    overflow: hidden;
+    margin-top: 25px;
+    ul {
+      li {
+        width: 160px;
+        a {
+          font-size: 18px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+/* Main Area */
+#main {
+}
+
+/* Footer */
+footer {
+  background: #000;
+  color: $grey;
+  height: 380px;
+  border-top: 20px $red solid;
+  .footer-menu {
+    overflow: hidden;
+    margin-top: 50px;
+  }
+  h3 {
+    font-size: 21px;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+    li {
+      margin-top: 14px;
+      a {
+        color: $grey;
+        text-decoration: none;
+        /*font-size: 12px;*/
+      }
+      a:hover, a:focus {
+        color: $red;
+        text-decoration: none;
+      }
+    }
+  }
+  .copy-right {
+    margin: 50px 0;
+    text-align: center;
+  }
+}
+
+// home and category#show both use this
+.event_list {
+  margin: 60px 60px 20px 60px;
+  .event_container {
+    width: 240px;
+    margin-right: 2px;
+    img {
+      width: 240px;
+      height: 160px;
+    }
+    .event_detail {
+      margin: 20px 0 20px 0;
+    }
+  }
+  li {
+    font-size: 13px;
+    margin: 5px 0 5px 0;
+    color: #C1C1C1;
+    a { font-size: 13px; }
+  }
+  li.title {
+    a { color: #FAB246; }
+  }
+}

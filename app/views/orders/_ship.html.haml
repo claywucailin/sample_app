@@ -1,0 +1,19 @@
+#ship
+  .sub_title
+    = image_tag "checkout_num_1.png"
+    配送以及联系方式
+  .ship_content
+    .info
+      %div
+        %span.ship_label 姓名：
+        = text_field_tag '[address]recipient', current_user.name
+      %div
+        %span.ship_label 地址：
+        = text_field_tag '[address]street_address', current_user.address.try(:street_address)
+      %div
+        %span.ship_label 电子邮件地址：
+        = text_field_tag 'buyer_email', current_user.email
+      %div
+        %span.ship_label 手机：
+        = text_field_tag '[address]tel', current_user.tel
+    = link_to image_tag('checkout_next_step.png'), '#', id: "ship_next_step"

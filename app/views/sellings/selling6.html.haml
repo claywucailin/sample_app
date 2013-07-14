@@ -1,0 +1,104 @@
+.order_content
+  .order-header
+    %p
+      信息清单
+      = link_to "返回修改",'',class:"back-change"
+  .right_nav
+    %ul
+      %li{:style => "height:50px;"}
+      %li
+        = image_tag("Selling-serach-gray.png")
+      %li
+        = image_tag("Selling-enter-gray.png")
+      %li
+        = image_tag("Selling-price-gray.png")
+      %li
+        = image_tag("Selling-pay.png")
+      %li
+        = image_tag("Selling-submit-gray.png")
+      %li
+  .details
+    %table
+      %tr
+        %td
+          五月天回到地球表面
+        %td
+          = image_tag "small_calendar.png"
+          2013年5月20号
+        %td
+          = image_tag "little_location.png"
+          xxx体育场
+      %tr
+        %td
+          出售价格: 320$
+        %td
+          你将得到: 100$
+        %td
+      %tr
+        %td
+      %tr
+        %td
+      %tr
+        %td{:style => "border-bottom:1px solid black;margin-top:200px;"}
+        %td{:style => "border-bottom:1px solid black;margin-top:200px;"}
+  .main-info
+
+    .association-method
+      %p 联系方式
+      = link_to "编辑",'',class:"back-change",id:"contact_edit"
+      %br
+      = label_tag "联系人姓名:" 
+      = text_field_tag "name","zhangshan",readonly:"readonly"
+      %br
+      %br
+      %br
+      = label_tag "电话:" 
+      = text_field_tag "name","zhangshan",readonly:"readonly"
+      %br
+      %br
+      %br
+      = label_tag "地址:" 
+      = text_field_tag "name","zhangshan",readonly:"readonly"
+      %br
+      %br
+      %br
+      = label_tag "电子邮件:" 
+      = text_field_tag "name","zhangshan",readonly:"readonly"
+    .pay-method
+      %p 付款方式
+      = link_to "编辑",'',class:"back-change",id:"pay_edit"
+      %br
+      = label_tag "付款方式:" 
+      = text_field_tag "pay-method","zhangshan",readonly:"readonly",name:"pay"
+      %br
+      %br
+      %br
+      = label_tag "银行卡信息:" 
+      = text_field_tag "card-owning","工商银行银行卡",readonly:"readonly",name:"pay"
+      %br
+      %br
+      %br
+      = label_tag "银行卡地址:" 
+      = text_field_tag "card-address","xx市xx区xx路xx号",readonly:"readonly",name:"pay"
+  .submit-tag
+    = check_box_tag "info-agree","我确认无误并同意转让"
+    %span &nbsp;&nbsp;我确认无误并同意转让
+    %br
+    %br
+    = check_box_tag "user-rule","我已阅读并接受GoGo Piao用户协议"
+    %span &nbsp;&nbsp;我已阅读并接受GoGo Piao用户协议
+    = submit_tag ""
+:javascript
+  $("#contact_edit").click(function(e){
+    e.preventDefault();
+    $("input[name = 'name']").removeAttr("readonly");
+  });
+  $("#pay_edit").click(function(e){
+    e.preventDefault();
+    $("input[name = 'pay']").removeAttr("readonly");
+  });
+
+  
+
+
+  

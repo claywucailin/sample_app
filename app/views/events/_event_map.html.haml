@@ -1,0 +1,11 @@
+#event_map.fl
+  .icon.element
+    .icon_container.first
+      = image_tag("repast.png", :id => "repast")
+    .icon_container
+      = image_tag("location-red.png", :id => "location")
+  .map_bar.element
+  .map_title.element
+    MAP INFO
+  = render :partial => 'layouts/map_box', :locals => { x: 116.417854, y: 39.921988 }
+

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Buyer:
+  = @order.buyer_id
+%p
+  %b Shipment method:
+  = @order.shipment_method
+%p
+  %b Shipment address:
+  = @order.shipment_address
+%p
+  %b Payment date:
+  = @order.payment_date
+%p
+  %b Payment method:
+  = @order.payment_method
+%p
+  %b Total amount:
+  = @order.total_amount
+%p
+  %b Shipment date:
+  = @order.shipment_date
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

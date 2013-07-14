@@ -1,0 +1,83 @@
+.selling_content
+  .left_container
+    %p= t('.title')
+    .priceDesign
+      #price-info
+        = t('.price_info')
+      .event_info
+        .event_name
+          = f.object.event.try(:title)
+          = f.input_field :event_id, as: :hidden
+        .time
+          = f.object.event.try(:start_time).try(:to_date)
+        .address
+          = f.object.event.try(:venue).try(:name)
+      #price_input
+        %div
+          .tip_style= t('.price_your_ticket')
+          = f.input_field :list_price
+          = link_to t('.price_you_will_get'),nil,{:style => "color:red;", id: "price_you_will_get"}
+          %span#net_price= f.object.net_price
+      .result_content
+        .reference_content
+          #ref_nav
+            = t('.reference')
+          .price_detail
+            %div{:style => "position:relative;float:left;"}
+              = label_tag "已售",nil,class:"line-right",id:"sold_label"
+              = label_tag "未售",nil,class:"line-left",id:"unsold_label"
+            .details
+              .sold_detail
+                %table
+                  %tr
+                    %td= t('.list_price')
+                    %td= t('.section')
+                    %td= t('.row')
+                    %td.start_time
+                      = t('.start_time')
+                  - Listing.search({event_id: f.object.event_id}).sold.each do |listing|
+                    %tr
+                      %td= listing.list_price
+                      %td= listing.section
+                      %td= listing.row
+                      %td.start_time
+                        = listing.event.try(:start_time).try(:to_date)
+              .unsold_detail
+                %table
+                  %tr
+                    %td= t('.list_price')
+                    %td= t('.section')
+                    %td= t('.row')
+                    %td.start_time
+                      = t('.start_time')
+                  - Listing.search({event_id: f.object.event_id}).unsold.each do |listing|
+                    %tr
+                      %td= listing.list_price
+                      %td= listing.section
+                      %td= listing.row
+                      %td.start_time
+                        = listing.event.try(:start_time).try(:to_date)
+        .seats_table
+        .info_content
+          - sold_average = (Ticket.where(event_id: f.object.event_id).sold.average(:list_price) || 0)
+          - unsold_average = (Ticket.where(event_id: f.object.event_id).unsold.average(:list_price) || 0)
+          = label_tag "平均出售价格:"
+          = label_tag "￥#{sold_average}",nil,class:"average-sold-price"
+          = label_tag "平均未出售价格:"
+          = label_tag "￥#{unsold_average}",nil,class:"average-unsold-price"
+      .operation
+        %a{name: "previous_button", href: "javascript:void(0);", onclick: "javascript:history.back(-1);void(0);", class: "line-right"}
+          = t('.prev_step')
+        %a{name: "submit", href: "javascript:void(0);", onclick: "javascript:document.getElementById('new_listing').submit();void(0);", class: "line-left"}
+          = t('.next_step')
+  .right_nav
+    %ul
+      %li{style: "height:50px;"}
+      %li= image_tag("Selling-search.png")
+      %li= image_tag("Selling-enter-gray.png")
+      %li= image_tag("Selling-price-gray.png")
+      %li= image_tag("Selling-gray.png")
+      %li= image_tag("Selling-submit-gray.png")
+      %li
+/:javascript
+  

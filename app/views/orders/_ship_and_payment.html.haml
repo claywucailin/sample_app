@@ -1,0 +1,9 @@
+#ship_payment.pull-left
+  = simple_form_for(@order) do |f|
+    = render :partial => "ship", :locals => { f: f }
+    = render :partial => "payment", :locals => { f: f }
+    = render :partial => "confirm", :locals => { f: f }
+    = hidden_field_tag "event_id", params[:event_id]
+    = hidden_field_tag "listing_id", params[:listing_id]
+    = hidden_field_tag 'tickets_amount', tickets_amount
+    = hidden_field_tag 'shipment_method', shipment_method

@@ -1,0 +1,44 @@
+- tickets = @listing.get_some_available_tickets tickets_amount
+- list_price = tickets.first.list_price
+- seats = tickets.map { |x| x.seat + "号" }
+#info.pull-left
+  .title
+    购买门票
+  .event_info
+    .date
+      %div
+        = @event.start_time.strftime("%Y年%m月%d日")
+      .wday
+        = @event.start_time.wday # don't know who to use I18n
+    .place_time
+      .event_name
+        = image_tag "checkout_event_name.png"
+        = @event.title
+      .event_place
+        = image_tag "checkout_event_place.png"
+        = @event.venue.name
+      .event_time
+        = image_tag ("checkout_event_time.png")
+        = @event.start_time.strftime("%R")
+  .seat_info.clearfix
+    %p
+      %span.seat_label 场馆分区:
+      %span
+        = @listing.section
+    %p
+      %span.seat_label 座位:
+      %span.seats
+        = @listing.row
+        = seats.join(", ")
+    %p
+      %span.seat_label 门票价格:
+      %span
+        %span.price= list_price
+        \/ 张
+    %p
+      %span.seat_label 座位特征:
+      轮椅可入
+  .ad
+    Testing
+  .protection
+    Lorem ipsum...

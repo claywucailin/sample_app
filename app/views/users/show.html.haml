@@ -1,0 +1,216 @@
+.my-account-container
+  .my-account-header
+    .welcome-title
+      .active-icon
+      %span.welcome 欢迎
+      %span.currentUser #{@user.name}
+    .my-account-operations
+      %ul
+        %li
+          = link_to "编辑个人信息", edit_user_registration_path
+        %li.gray-separate-line
+        %li
+          %a{"href"=>"#"} 修改用户密码
+        %li.gray-separate-line
+        %li
+          = link_to "退出登录", destroy_user_session_path, method: :delete
+  .activity-container
+    .my-order
+      .my-order-header 我的订单
+      .my-order-body
+        =image_tag "xtf.jpg"
+        -# TODO: switch image when user click pager
+    .activity-outline-container
+      .activity-outline-header
+        .active-icon
+        %span.header 活动概要
+      .activity-outline-body
+        .activity-detail
+          .activity-top
+            五月天回到地球表面
+          .activity-time
+            = image_tag "我的主页-日历-01.png"
+            2013年6月30日
+          .activity-location
+            = image_tag "我的主页-地址-01.png"
+            xxx体育场
+        - @buyer_orders.each do |o|
+          - event=o.tickets.first.event
+          .activity-sub-outline
+            .activity-top
+              = event.title
+            .activity-time
+              = image_tag "small_calendar.png"
+              = event.start_time.strftime("%Y年%m月%号")
+            .activity-location
+              = image_tag "little_location.png"
+              = event.venue.name
+        .activity-sub-nav
+          %ul
+            %li
+              = link_to "订票详情"
+            %li 
+              = link_to "打印门票"
+            %li
+              = link_to "打印回执"
+            %li
+              = link_to "查看我的订单"
+      .pagination-bar
+        %ul
+          %li.inactive
+            %a{:href=>"#"} &laquo;
+          %li
+            %ul.page-numbers
+              %li.active
+                %a{:href=>"#"} 1
+              %li.inactive
+                %a{:href=>"#"} 2
+              %li.inactive
+                %a{:href=>"#"} 3
+              %li.inactive
+                %a{:href=>"#"} 4
+          %li.inactive
+            %a{:href=>"#"} &raquo;
+        = will_paginate @buyer_orders
+    .gray-separate-line
+    .transfer-detail-container
+      .transfer-detail-header
+        .active-icon
+        %span.header 转让详情
+      .transfer-detail-body
+        .activity-sub-header
+          共有
+          %span.ticket-amount 7
+          张票转让
+        %table.listing-items
+          %thead
+            %tr
+              %td.listing-activity-header 活动
+              %td.listing-time-header 时间
+              %td.listing-price-header 转让价格
+              %td.listing-amount-header 张数
+              %td.listing-status-header 状态
+          %tbody
+          - @items.each do |item|
+            %tr
+            - item.each do |index, value|
+              - if index == :status
+                %td{:class => value[0]}= value[1]
+              - else
+                %td{:class =>(item[:status][0]+"_"+index.to_s())}= value
+      .pagination-bar
+        %ul
+          %li.inactive
+            %a{:href=>"#"} &laquo;
+          %li
+            %ul.page-numbers
+              %li.active
+                %a{:href=>"#"} 1
+              %li.inactive
+                %a{:href=>"#"} 2
+              %li.inactive
+                %a{:href=>"#"} 3
+              %li.inactive
+                %a{:href=>"#"} 4
+          %li.inactive
+            %a{:href=>"#"} &raquo;
+        -#= will_paginate @items
+  .my-account-sec-container
+    .my-favorite-activity-container
+      .my-favorite-header
+        .header 我最爱的活动
+        .my-favorite-operations
+          %ul
+            %li
+              = link_to "查看喜欢的列表"
+            %li.gray-separate-line
+            %li
+              = link_to "添加/修改" 
+      .my-favorite-body
+        .activity-predict-wrapper
+          .activity-predict-title 活动预告
+        .my-favorite-contents
+          .my-other-favorite-activity
+            %ul
+              %li
+                .my-favorite-activity-intro
+                  = image_tag "ragedoo.png"
+                  .activity-title
+                    .activity-title-description 周杰伦世界末日演唱会
+                    %br/
+                    .activity-detail 2013年6月30日 xxx体育场
+                .check-ticket-link= link_to "查看门票"
+              %li
+                .list-type-icon-01
+                .my-favorite-activity-intro
+                  .activity-title "2012年CBA总决赛 2013.06.31"
+                .check-ticket-link
+                  = link_to "查看门票"
+              %li
+                .list-type-icon-02
+                .my-favorite-activity-intro
+                  .activity-title "xxx美术馆双年展 2013.06.31"
+                .check-ticket-link= link_to "查看门票"
+    .gray-separate-line
+    .manage-orders-container
+      .manage-orders-header
+        .header 订单管理
+        .manage-orders-operations
+          %ul.operations
+            %li.active
+              = link_to "我的订单"
+            %li.gray-separate-line
+            %li.inactive
+              = link_to "我的列表"
+      .manage-orders-body
+        .order-post-wrapper
+          .activity-poster
+            = image_tag "poster.png",{:alt=>"海报"}
+        .manage-orders-contents
+          .activity-detail
+            .activity-top
+              五月天回到地球表面
+            .activity-time
+              = image_tag "我的主页-日历-01.png"
+              2013年6月30日
+            .activity-location
+              = image_tag "我的主页-地址-01.png"
+              xxx体育场
+            .orders-detail
+              = link_to "订单详情"
+  .recommend-and-last-browse-container
+    .left-title-bar.operations
+      .recommend-product-operation
+        .active= link_to "商品推荐"
+      .last-browse-operation
+        .inactive= link_to "最近浏览"
+    .gray-separate-line
+    .right-product-list
+      %ul.product-list
+        %li.product-item
+          = image_tag "ragedoo.png"
+          .activity-detail
+            .activity-top
+              五月天回到地球表面
+            .activity-time
+              2013年6月30日
+            .activity-location
+              xxx体育场
+        %li.product-item
+          = image_tag "ragedoo.png"
+          .activity-detail
+            .activity-top
+              五月天回到地球表面
+            .activity-time
+              2013年6月30日
+            .activity-location
+              xxx体育场
+        %li.product-item
+          = image_tag "ragedoo.png"
+          .activity-detail
+            .activity-top
+              五月天回到地球表面
+            .activity-time
+              2013年6月30日
+            .activity-location
+              xxx体育场

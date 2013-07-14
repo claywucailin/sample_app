@@ -1,27 +1,52 @@
-source 'https://rubygems.org'
-
+source 'http://ruby.taobao.org'
 gem 'rails', '3.2.13'
-gem 'bootstrap-sass', '2.0.4'
-group :development, :test do
-  gem 'sqlite3', '1.3.5'
-  gem 'rspec-rails', '2.11.0'
-end
-
-
-# Gems used only for assets and not required
-# in production environments by default.
+gem 'pg'
 group :assets do
-  gem 'sass-rails',   '3.2.5'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails', '2.0.2'
-
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'cancan'
+gem 'devise'
+gem 'figaro'
+gem 'haml-rails'
+gem 'rolify'
+gem 'simple_form'
+gem 'acts-as-taggable-on'
+gem 'paperclip', '~> 3.0'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'kaminari'
+gem 'roo'
+gem 'grape'
+gem 'squeel'
+gem 'rabl'
+gem 'oj'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'html2haml'
+  gem 'quiet_assets'
+  gem 'rb-fchange', :require=>false
+  gem 'rb-fsevent', :require=>false
+  gem 'rb-inotify', :require=>false
+end
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'thin'
+  gem 'rails-erd'
+end
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'email_spec'
 end
-
 group :production do
-  gem 'pg', '0.12.2'
+  gem 'unicorn'
 end

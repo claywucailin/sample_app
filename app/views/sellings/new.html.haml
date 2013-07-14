@@ -1,0 +1,4 @@
+= simple_form_for(@listing, url: sellings_path, method: :post) do |f|
+  = display_error_messages @listing
+
+  = render "#{@listing.current_step}_step", :f => f

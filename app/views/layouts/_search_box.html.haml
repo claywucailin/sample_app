@@ -1,0 +1,8 @@
+#search
+  = form_tag search_result_index_path, method: :get do
+    .wrapper
+      %input{type: :text, name: :search, class: :long}
+      %input{type: :submit, class: "search_style", value: ""}
+      /
+        = text_field :'search', 'please input', class: 'long'
+        = submit_tag '', class:"search_style"

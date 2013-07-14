@@ -1,0 +1,32 @@
+.listing-info.pull-left
+  %h1.title= @event.title
+  %p.time
+    = l @event.start_time, :format => :long
+  %p.description= @event.description
+  %p.seat-section-row
+    = @listing.section
+    = @listing.row
+  %p.seat-num
+    座位号:
+    %span
+      - @tickets.each do |t|
+        = t.seat+'、'
+  = form_tag checkout_path do |f|
+    %div
+      %label 购买数量:
+      = select_tag :tickets_amount, options_for_select(@ticket_select)
+      /= image_tag "arraw-down-white.png"
+    .label_style
+      %label 配送方式:
+      = select_tag :shipment_method, options_for_select(Listing::SHIPMENT_METHOD)
+      /= image_tag "arraw-down-white.png"
+    %p
+      票价:
+      %span
+        = number_to_currency @tickets.first.list_price
+    %p
+      接受的付款方式:
+    = submit_tag ""
+    = hidden_field_tag 'event_id', @event.id
+    = hidden_field_tag 'listing_id', @listing.id
+    = link_to "有疑问？返回上一页", :back

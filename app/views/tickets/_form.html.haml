@@ -1,0 +1,14 @@
+= simple_form_for(@ticket) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :event_id
+    = f.input :section
+    = f.input :row
+    = f.input :seat
+    = f.input :order_id
+    = f.input :listing_id
+    = f.input :unit_price
+
+  .form-actions
+    = f.button :submit

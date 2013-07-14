@@ -1,0 +1,12 @@
+.performers
+  %h3.performer_header
+    艺术家/球队:
+    - ('A'..'Z').to_a.each do |c|
+      = link_to c, params.merge({:performer_1st_char => c}),
+        :class => ('current' if params['performer_1st_char'] == c)
+      \|
+    = link_to '#'
+    \|
+  .performer_links.clearfix
+    - performers.each do |performer|
+      = link_to performer.name, '#', :class => "fl"

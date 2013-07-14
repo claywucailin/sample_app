@@ -1,0 +1,31 @@
+#ticket.fl
+  .ticket_count
+    = @listings.count
+    %span
+      张
+    %span.gray
+      可购买
+
+  .listings
+    - @listings.each do |listing|
+      .listing.clearfix
+        .red-block.fl
+        .detail_block.fl
+          .detail
+            = listing.section
+            = listing.row
+            %span.price.fr
+              = number_to_currency listing.tickets.first.list_price
+          .deliver_info
+            %span.get_tickets.fr
+              = link_to image_tag("get-tickets.png"), event_listing_path(@event, listing)
+
+    = paginate @listings, :window => 2
+    - if @listings.count > 7
+      .jump_to
+        %input.jump_to_page{:type => "text"}
+        %span.separator
+          \/
+        %span.page_count
+          = ((@listings.count + 6)/ 7).to_s
+        = link_to image_tag('jump-to.png'), event_path(@event), :class => "jump_to_button", :url => event_path(@event)

@@ -1,0 +1,12 @@
+.listing-misc.pull-left
+  #locationlog
+    = image_tag "location-red.png",:style => "margin-top:10px;"
+    .image_style
+      = image_tag "gray-goods-icon.png"
+  .columinfo
+    = @event.venue.name
+  #listing_map
+    = render :partial => 'layouts/map_box', :locals => { x: 116.417854, y: 39.921988 }
+  .attention
+    .columinfo
+      我们的注意事项                  

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Addressable:
+  = @address.addressable_id
+%p
+  %b Addressable type:
+  = @address.addressable_type
+%p
+  %b Zipcode:
+  = @address.zipcode
+%p
+  %b Street address:
+  = @address.street_address
+%p
+  %b Region:
+  = @address.region_id
+
+= link_to 'Edit', edit_address_path(@address)
+\|
+= link_to 'Back', addresses_path

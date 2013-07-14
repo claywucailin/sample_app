@@ -1,0 +1,23 @@
+#confirm
+  .sub_title
+    = image_tag "checkout_num_3.png"
+    确认信息以及支付
+  .info.hide
+    .name
+      %span 姓名：
+    .addr
+      %span 地址：
+    .email
+      %span 电子邮件地址：
+    .tel
+      %span 手机：
+    .ship_type
+      %span 配送方式：
+    .pay_type
+      %span 付款方式：
+    .card_num
+      %span 银行卡号：
+    .total
+      %span 共支付：
+
+  = image_submit_tag "checkout_confirm_pay.png", class: 'hide', id: "submit"

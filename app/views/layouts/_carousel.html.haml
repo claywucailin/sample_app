@@ -1,0 +1,15 @@
+.carousel-wrapper
+  %div{:style => "float:left; position: relative"}
+    %section#carousel{{:style => "position:relative;left:0; top:0px;"}}
+      #myCarousel.carousel.slide
+        %ol.carousel-indicators{:style => "list-style:none"}
+          %li{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+          %li.active{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+          %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+        .carousel-inner
+          .item
+            = image_tag("1.jpg")
+          .item.active
+            = image_tag("2.jpg")
+          .item
+            = image_tag("3.jpg")

@@ -1,0 +1,50 @@
+.events_list
+  .list_left_container
+    %p
+      xxx的活动列表
+    .list_left_container
+      .event-lists
+        %table
+          %tr{:style => "text-align:left;font-size:20px;"}
+            %th
+            %th
+              = Event.human_attribute_name("活动")
+            %th
+              = Event.human_attribute_name("时间")
+            %th
+              = Event.human_attribute_name("地点")
+          - @events.each do |event|
+            
+            %tr{:style => "height:80px;letter-spacing:5px;"}
+              %td{:style => "width:50px"}
+                = check_box_tag "select", event.id
+              %td{:style => "font-size:18px;"}
+                = link_to event.title, new_selling_path({event_id: event.id})
+              %td{:style => "font-size:18px;"}
+                = event.start_time.try(:to_date)
+              %td{:style => "font-size:18px;"}
+                = event.venue.name
+        = paginate @events 
+  .right_nav
+    %ul
+      %li{:style => "height:50px;"}
+      %li
+        = image_tag("Selling-search.png")
+      %li
+        = image_tag("Selling-enter-gray.png")
+      %li
+        = image_tag("Selling-price-gray.png")
+      %li
+        = image_tag("Selling-gray.png")
+      %li
+        = image_tag("Selling-submit-gray.png")
+      %li{:style => "height:50px;"}
+  .next_operation
+    = link_to "返回上一级",sellings_path,class:"line-right"
+    %a{href: "javascript:void(0);", class: "btn-next"} 下一步
+:javascript
+  $(function(){
+    
+  });
+  
+
